@@ -23,17 +23,16 @@ ENV HOME="/" \
     OS_ARCH="${TARGETARCH:-amd64}" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
+    IMAGE_
 
 COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl procps zlib1g
-# RUN apt-get update && apt-get install -y ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "yq-4.44.6-0-linux-${OS_ARCH}-debian-12" \
       "java-21.0.5-11-1-linux-${OS_ARCH}-debian-12" \
-      # "spring-cloud-dataflow-2.11.5-1-linux-${OS_ARCH}-debian-12" \
     ) ; \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
