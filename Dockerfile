@@ -4,7 +4,7 @@
 FROM docker.io/bitnami/minideb:bookworm
 
 ARG DOWNLOADS_URL="downloads.bitnami.com/files/stacksmith"
-ARG DOWNLOADS_URL_2="downloads.bitnami.com/files/stacksmith"
+ARG DOWNLOADS_URL_2="https://s3-jarvis.s3.ap-southeast-1.amazonaws.com"
 ARG JAVA_EXTRA_SECURITY_DIR="/bitnami/java/extra-security"
 ARG TARGETARCH
 
