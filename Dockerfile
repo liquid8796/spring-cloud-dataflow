@@ -25,7 +25,6 @@ ENV HOME="/" \
     OS_NAME="linux"
 
 COPY prebuildfs /
-RUN ls
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl procps zlib1g
