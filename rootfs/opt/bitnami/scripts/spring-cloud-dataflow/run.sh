@@ -20,6 +20,8 @@ set -o pipefail
 
 info "** Starting Spring Cloud Data Flow **"
 
+chmod -R 0755 ${SPRING_CLOUD_DATAFLOW_BASE_DIR}
+
 __run_cmd="java"
 read -r -a java_opts <<< "$JAVA_OPTS"
 __run_flags=("-jar" "-Duser.home=${HOME}" "${SPRING_CLOUD_DATAFLOW_BASE_DIR}/spring-cloud-dataflow-server-2.11.5.jar" "--spring.config.additional-location=optional:${SPRING_CLOUD_DATAFLOW_CONF_FILE}" "$@")
