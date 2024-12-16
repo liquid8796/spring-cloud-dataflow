@@ -25,6 +25,7 @@ ENV HOME="/" \
     OS_NAME="linux"
 
 COPY prebuildfs /
+RUN ls
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN install_packages ca-certificates curl procps zlib1g
@@ -33,7 +34,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "yq-4.44.6-0-linux-${OS_ARCH}-debian-12" \
       "java-21.0.5-11-1-linux-${OS_ARCH}-debian-12" \
-      "spring-cloud-dataflow-2.11.5-1-linux-${OS_ARCH}-debian-12" \
+      # "spring-cloud-dataflow-2.11.5-1-linux-${OS_ARCH}-debian-12" \
     ) ; \
     for COMPONENT in "${COMPONENTS[@]}"; do \
       if [ ! -f "${COMPONENT}.tar.gz" ]; then \
@@ -43,6 +44,12 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
       sha256sum -c "${COMPONENT}.tar.gz.sha256" ; \
       tar -zxf "${COMPONENT}.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
       rm -rf "${COMPONENT}".tar.gz{,.sha256} ; \
+
+      if [ -f "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" ]; then \
+        curl -SsLf "https://download850.mediafire.com/18ptjyo79p8gifmLxPKUFvwop9e-4vCdfbLdsbfEIsOefC_l2cLoE1ij-O_FCdUpPLijL-nfZtWpq0xNSsc3_ZXw3TZwuPtsL08pqFPwO3Gd3FyFd76_lb2a4zld8iw6iCICgFfItU6D1OyIs4Iq9kqEOCEUQZhVXc1itH7Vk1rllQ/j9f1bb6vlr6x5yy/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
+        tar -zxf "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
+        rm -rf spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz ; \
+      fi ; \
     done
 RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
