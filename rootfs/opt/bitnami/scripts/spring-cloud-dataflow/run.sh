@@ -20,7 +20,7 @@ set -o pipefail
 
 info "** Starting Spring Cloud Data Flow **"
 
-chmod -R 0755 ${SPRING_CLOUD_DATAFLOW_BASE_DIR}
+# chmod -R 0755 ${SPRING_CLOUD_DATAFLOW_BASE_DIR}
 
 __run_cmd="java"
 read -r -a java_opts <<< "$JAVA_OPTS"
