@@ -23,8 +23,8 @@ LABEL com.vmware.cp.artifact.flavor="sha256:c50c90cfd9d12b445b011e6ad529f1ad3dae
 ENV HOME="/" \
     OS_ARCH="${TARGETARCH:-amd64}" \
     OS_FLAVOUR="debian-12" \
-    OS_NAME="linux"
-    SCDF_FILENAME=
+    OS_NAME="linux" \
+    SCDF_FILENAME="spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz"
 
 COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
@@ -46,7 +46,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
 
       if [ ! -f "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" ]; then \
         curl -SsLf "https://s3-jarvis.s3.ap-southeast-1.amazonaws.com/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
-        curl -SsLf "https://${DOWNLOADS_URL_2}/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
+        curl -SsLf "https://${DOWNLOADS_URL_2}/" -O ; \
         tar -zxf "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
         rm -rf spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz ; \
       fi ; \
