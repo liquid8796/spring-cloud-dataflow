@@ -45,7 +45,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
       rm -rf "${COMPONENT}".tar.gz{,.sha256} ; \
 
       if [ ! -f "${SCDF_FILENAME}" ]; then \
-        curl -SsLf "https://s3-jarvis.s3.ap-southeast-1.amazonaws.com/" -O ; \
+        curl -SsLf "https://s3-jarvis.s3.ap-southeast-1.amazonaws.com/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
         tar -zxf "${SCDF_FILENAME}" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
         rm -rf "${SCDF_FILENAME}" ; \
       fi ; \
