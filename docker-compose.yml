@@ -1,0 +1,19 @@
+# Copyright Broadcom, Inc. All Rights Reserved.
+# SPDX-License-Identifier: APACHE-2.0
+
+services:
+  spring-cloud-dataflow:
+    image: docker.io/liquid8796/spring-cloud-dataflow-server:2.11.5
+    restart: always
+    environment:
+      - SERVER_PORT=9393
+      # configuring database
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521:ORCLCDB
+      - SPRING_DATASOURCE_USERNAME=your_oracle_user
+      - SPRING_DATASOURCE_PASSWORD=your_oracle_password
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=oracle.jdbc.OracleDriver
+      # enable advance features
+      - SPRING_CLOUD_DATAFLOW_FEATURES_TASKS_ENABLED=true
+      - SPRING_CLOUD_DATAFLOW_FEATURES_STREAMS_ENABLED=false
+    ports:
+      - '9393:9393'
