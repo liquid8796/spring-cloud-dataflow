@@ -64,6 +64,6 @@ ENV APP_VERSION="2.11.5" \
     JAVA_HOME="/opt/bitnami/java" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/java/bin:$PATH"
 
-USER 1001
+USER 0
 ENTRYPOINT [ "/opt/bitnami/scripts/spring-cloud-dataflow/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/spring-cloud-dataflow/run.sh" ]
