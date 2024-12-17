@@ -47,7 +47,7 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
       rm -rf "${COMPONENT}".tar.gz{,.sha256} ; \
 
       if [ ! -f "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" ]; then \
-        curl -SsLf "https://download850.mediafire.com/9ak1r3y01dvgcM5FnVkvLkcVcl_uJzuPpp5yMaTzXpluF4VTLlCrvw5MJqAkdddVKHk33ofL4xLxzs74s2KtMqWvQ1TpvA19cpCC-27b7UBBDjnf3tzZru5MdgzbOL9Hl9Ynz9UxJI3Y4Z0tHLxhUnHA7Ker64nE555Am2uuxXU/j9f1bb6vlr6x5yy/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
+        curl -SsLf "" -O ; \
         tar -zxf "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
         rm -rf spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz ; \
       fi ; \
