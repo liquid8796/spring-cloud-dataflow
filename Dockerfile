@@ -24,7 +24,7 @@ ENV HOME="/" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
 
-RUN rm -rf /usr/sbin/install_packages
+RUN rm -rf /usr/sbin
 
 RUN cd /usr/sbin/ ; ls
 
