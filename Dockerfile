@@ -24,7 +24,7 @@ ENV HOME="/" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
 
-RUN cd usr ; ls
+RUN cd usr/sbin ; ls
 
 COPY prebuildfs /
 
