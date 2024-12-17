@@ -24,8 +24,6 @@ ENV HOME="/" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
 
-
-
 COPY prebuildfs /
 
 RUN cd usr/sbin ; ls; cat install_packages
