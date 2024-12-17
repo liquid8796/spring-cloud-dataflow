@@ -32,7 +32,7 @@ RUN chmod -R 0755 /usr/sbin; cd usr/sbin ;  \
 if [ -f "install_packages" ]; then \
   ls ; \
   chmod -R 0755 install_packages ; \
-  mv install_packages install_packages.sh
+  mv install_packages install_packages.sh ; \
   ./install_packages.sh ca-certificates curl procps zlib1g ; \
 fi
 # RUN install_packages ca-certificates curl procps zlib1g
