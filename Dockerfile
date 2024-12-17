@@ -30,6 +30,7 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 RUN apt-get dos2unix
 # Install required system packages and dependencies
 RUN chmod +x /usr/sbin/install_packages
+RUN dos2unix yourfile.sh
 RUN install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
