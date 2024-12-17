@@ -27,7 +27,8 @@ ENV HOME="/" \
 COPY prebuildfs /
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
-RUN install_packages ca-certificates curl procps zlib1g;
+# Install required system packages and dependencies
+install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "yq-4.44.6-0-linux-${OS_ARCH}-debian-12" \
@@ -63,6 +64,6 @@ ENV APP_VERSION="2.11.5" \
     JAVA_HOME="/opt/bitnami/java" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/java/bin:$PATH"
 
-USER 0
+USER 1001
 ENTRYPOINT [ "/opt/bitnami/scripts/spring-cloud-dataflow/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/spring-cloud-dataflow/run.sh" ]
