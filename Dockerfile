@@ -24,11 +24,10 @@ ENV HOME="/" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
 
-RUN apt-get dos2unix
-
 COPY prebuildfs /
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
+RUN apt-get dos2unix
 # Install required system packages and dependencies
 RUN chmod -R 0755 /usr/sbin
 RUN chmod +x /usr/sbin/install_packages
