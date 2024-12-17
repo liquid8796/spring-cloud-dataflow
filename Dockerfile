@@ -24,7 +24,7 @@ ENV HOME="/" \
     OS_FLAVOUR="debian-12" \
     OS_NAME="linux"
 
-RUN apt-get install
+RUN apt-get dos2unix
 
 COPY prebuildfs /
 
