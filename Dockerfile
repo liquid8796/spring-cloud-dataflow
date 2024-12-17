@@ -29,7 +29,7 @@ COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN cd usr/sbin ; ls
-RUN install_packages ca-certificates curl procps zlib1g
+# RUN install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "yq-4.44.6-0-linux-${OS_ARCH}-debian-12" \
