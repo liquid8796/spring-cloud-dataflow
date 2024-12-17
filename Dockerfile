@@ -33,7 +33,7 @@ if [ -f "install_packages" ]; then \
   ls ; \
   chmod -R 0755 install_packages ; \
   pwd ; \
-  install_packages ca-certificates curl procps zlib1g ; \
+  /usr/sbin/install_packages ca-certificates curl procps zlib1g ; \
 fi
 # RUN install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
