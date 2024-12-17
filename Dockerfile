@@ -25,6 +25,7 @@ ENV HOME="/" \
     OS_NAME="linux"
 
 COPY prebuildfs /
+
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN cd usr/sbin ; ls
