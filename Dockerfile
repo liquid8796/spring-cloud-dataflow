@@ -27,6 +27,7 @@ ENV HOME="/" \
 COPY prebuildfs /
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
+RUN apt-get update
 RUN apt-get install dos2unix
 # Install required system packages and dependencies
 RUN chmod +x /usr/sbin/install_packages
