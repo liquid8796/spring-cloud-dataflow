@@ -62,7 +62,6 @@ COPY rootfs /
 
 RUN find /opt/bitnami/scripts -type f -exec dos2unix {} \;
 RUN opt/bitnami/scripts/spring-cloud-dataflow/postunpack.sh
-RUN dos2unix /bitnami/java/extra-security
 RUN opt/bitnami/scripts/java/postunpack.sh
 ENV APP_VERSION="2.11.5" \
     BITNAMI_APP_NAME="spring-cloud-dataflow" \
