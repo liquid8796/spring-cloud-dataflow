@@ -3,6 +3,8 @@
 
 FROM docker.io/bitnami/minideb:bookworm
 
+WORKDIR /app
+
 ARG DOWNLOADS_URL="downloads.bitnami.com/files/stacksmith"
 ARG JAVA_EXTRA_SECURITY_DIR="/bitnami/java/extra-security"
 ARG TARGETARCH
