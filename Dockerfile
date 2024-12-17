@@ -32,7 +32,9 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN dos2unix /usr/sbin/install_packages
 RUN install_packages ca-certificates curl procps zlib1g
-RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
+RUN mkdir -p /tmp/bitnami/pkg/cache
+COPY /build /opt/bitnami
+RUN cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
       "yq-4.44.6-0-linux-${OS_ARCH}-debian-12" \
       "java-21.0.5-11-1-linux-${OS_ARCH}-debian-12" \
@@ -45,12 +47,6 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
       sha256sum -c "${COMPONENT}.tar.gz.sha256" ; \
       tar -zxf "${COMPONENT}.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
       rm -rf "${COMPONENT}".tar.gz{,.sha256} ; \
-
-      if [ ! -f "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" ]; then \
-        curl -SsLf "https://download850.mediafire.com/jqsbqllm1aug_i2tdJYH3Kt1sheb_s6XbN6wItkiH2qPwP4Q7MlZYKXKOVc-iijPig2eaZsD0WlGvvHG65KhfE7oJ0DH3TwycoaugdEtshOgoiXLkG2Sch2tJd2p6yOKt0Ncm61i5AW9mBYAkRbZioL9eIMF9aTZKbg1y7n57BE/j9f1bb6vlr6x5yy/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
-        tar -zxf "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
-        rm -rf spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz ; \
-      fi ; \
     done
 RUN apt-get autoremove --purge -y curl && \
     apt-get update && apt-get upgrade -y && \
@@ -61,7 +57,7 @@ RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 COPY rootfs /
 
 RUN find /opt/bitnami/scripts -type f -exec dos2unix {} \;
-RUN cd opt/bitnami/scripts/spring-cloud-dataflow ; ls
+RUN cd opt/bitnami/scripts/spring-cloud-dataflow
 RUN opt/bitnami/scripts/spring-cloud-dataflow/postunpack.sh
 RUN opt/bitnami/scripts/java/postunpack.sh
 ENV APP_VERSION="2.11.5" \
