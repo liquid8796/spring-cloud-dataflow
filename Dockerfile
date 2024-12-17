@@ -27,7 +27,7 @@ ENV HOME="/" \
     OS_NAME="linux"
 
 
-RUN rm -rf /usr/sbin/install_packages
+RUN ls
 COPY prebuildfs /
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
