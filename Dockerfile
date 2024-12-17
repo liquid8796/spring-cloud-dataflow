@@ -28,7 +28,7 @@ COPY prebuildfs /
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
-RUN cd usr/sbin ; ls ; install_packages ca-certificates curl procps zlib1g
+RUN chmod g+rwX /usr/sbin usr/sbin ; ls ; install_packages ca-certificates curl procps zlib1g
 # RUN install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
