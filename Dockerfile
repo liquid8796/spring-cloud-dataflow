@@ -29,11 +29,9 @@ COPY prebuildfs /
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
 RUN chmod -R 0755 /usr/sbin; cd usr/sbin ; ls ; \
-if [ ! -f "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" ]; then \
-        curl -SsLf "https://download850.mediafire.com/f3xgat36o40gxOuEbXFhbus9GKv7s6OtWmiIg7L_g20dx3KiRt1htZ23ukKB9Qx2MFg3XA9-sXxZHuXSbdQwBVC5WfrudXIjl_n0gE_RciwgODmVcjaENoeHHlIXvd0LF8QfOJIFGw8TU2gZbGEDhNRgcL8RzZoiK5RaezgA93w/j9f1bb6vlr6x5yy/spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -O ; \
-        tar -zxf "spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz" -C /opt/bitnami --strip-components=2 --no-same-owner --wildcards '*/files' ; \
-        rm -rf spring-cloud-dataflow-2.11.5-linux-amd64-debian-12.tar.gz ; \
-      fi ; \
+if [ ! -f "install_packages" ]; then \
+  
+fi ; \
 # RUN install_packages ca-certificates curl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
