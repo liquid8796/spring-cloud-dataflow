@@ -58,9 +58,9 @@ RUN apt-get autoremove --purge -y curl && \
 RUN chmod g+rwX /opt/bitnami
 RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 
-COPY rootfs /
+COPY rootfs /opt/bitnami/scripts
 
-RUN dos2unix /opt/bitnami/scripts/spring-cloud-dataflow/postunpack.sh /opt/bitnami/scripts/java/postunpack.sh
+RUN find  -type f -exec dos2unix {} \;
 RUN opt/bitnami/scripts/spring-cloud-dataflow/postunpack.sh
 RUN opt/bitnami/scripts/java/postunpack.sh
 ENV APP_VERSION="2.11.5" \
