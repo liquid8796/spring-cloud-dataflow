@@ -60,7 +60,7 @@ RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 
 COPY rootfs /
 
-RUN find  -type f -exec dos2unix {} \;
+RUN find /opt/bitnami/scripts -type f -exec dos2unix {} \;
 RUN opt/bitnami/scripts/spring-cloud-dataflow/postunpack.sh
 RUN opt/bitnami/scripts/java/postunpack.sh
 ENV APP_VERSION="2.11.5" \
