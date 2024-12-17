@@ -26,7 +26,7 @@ ENV HOME="/" \
 
 COPY prebuildfs /
 
-RUN cd usr/sbin ; ls; cat install_packages
+RUN chmod +x /usr/sbin/install_packages
 
 SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 # Install required system packages and dependencies
