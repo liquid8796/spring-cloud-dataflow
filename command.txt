@@ -1,3 +1,3 @@
-docker build --no-cache -t spring-cloud-dataflow-server:2.11.5 .;  docker push spring-cloud-dataflow-server:2.11.5
+docker build --no-cache -t spring-cloud-dataflow-server:2.11.5 .;  docker push liquid8796/spring-cloud-dataflow-server:2.11.5
 
 docker save liquid8796/spring-cloud-dataflow-server:2.11.5 -o spring-cloud-dataflow-server-2.11.5.tar
