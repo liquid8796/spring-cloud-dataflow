@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="http://adfsuat2019.sacombank.local/adfs/services/trust">
+	<md:IDPSSODescriptor WantAuthnRequestsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+		<md:KeyDescriptor use="signing">
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509Certificate>
+						MIIDqDCCApCgAwIBAgIJAOS+YL01agSkMA0GCSqGSIb3DQEBDAUAMIGBMQswCQYD
+						VQQGEwJWTjERMA8GA1UECBMIU291dGhlcm4xDDAKBgNVBAcTA0hDTTESMBAGA1UE
+						ChMJU2Fjb21iYW5rMQswCQYDVQQLEwJJVDEwMC4GA1UEAxMnc2NkZi1wbWMuYXBw
+						cy51YXQtY2xvdWQuc2Fjb21iYW5rLmxvY2FsMB4XDTI1MDMyNzA4NTAzM1oXDTM1
+						MDMyNTA4NTAzM1owgYExCzAJBgNVBAYTAlZOMREwDwYDVQQIEwhTb3V0aGVybjEM
+						MAoGA1UEBxMDSENNMRIwEAYDVQQKEwlTYWNvbWJhbmsxCzAJBgNVBAsTAklUMTAw
+						LgYDVQQDEydzY2RmLXBtYy5hcHBzLnVhdC1jbG91ZC5zYWNvbWJhbmsubG9jYWww
+						ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDQNwYiCqJKh4eLsvwJWuPF
+						8T9ObYAlicuaH1d6zvvQsfEztQQF227uxD9cFd6RXFtRpCqFmZrMVdUhm8nV3nbE
+						fAClcGgnEVNyEGhSr57paUtFOp90FZwfjuyUTNxopjI8A0jFyRfQ3zAvnV0nvHqe
+						IXgRZxRiNN2W60I3nMJCkZUxMGGDRRpkq3C83W79jaYWdhgYFpWm3nyorOW7/sv6
+						eOQ900t5+SHt98IwLH7VJkt1cVPtnpe2L/jDelqOzienALTRQzceeby6eGYdmwTg
+						BJi7y/jFfJgVg0QrjxUqu1FhvBnob5r172ee9uTB+w0fq9e0+R4RGy9bD4F3nUjv
+						AgMBAAGjITAfMB0GA1UdDgQWBBRCxPPlqJHrmd8SAArk3xvp/CEl4TANBgkqhkiG
+						9w0BAQwFAAOCAQEAAaGkN5CdbJ2913NB1NEt/xFeRwuqkk2PfKH9hG588hjXsbl7
+						cELLdlfkQaXW0J9v5salZUwlAZfTy5H6FdtUPzGjiWuGWfbrflBaq8+pxcMjEczR
+						F7AEnMGZ3drwsl8fGrrECO60uY25b1tzslWntBCGTvyHLQIo9e3s6LYyA198JnXv
+						Emes6a1XK3MGem4zzcrD64eG23BgR9Jswg9hh4qCiKxS41SGAerdr7CMWpyiN3Sy
+						dt/nF7NM9sw57uQaXiaAuiAY51XmM8Au8k6B2Zfac+ZrgTwrawEK1/9UIy4XF1bW
+						asWiTDfGksJLxr9n5tpbevbBKaqAsnClJpv9pA==
+					</ds:X509Certificate>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</md:KeyDescriptor>
+		<md:NameIDFormat>
+			urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
+		</md:NameIDFormat>
+		<md:NameIDFormat>
+			urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
+		</md:NameIDFormat>
+		<md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+								Location="https://adfsuat2019.sacombank.local/adfs/ls/"/>
+		<md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+								Location="https://adfsuat2019.sacombank.local/adfs/ls/"/>
+	</md:IDPSSODescriptor>
+</md:EntityDescriptor>

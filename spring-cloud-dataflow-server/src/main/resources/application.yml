@@ -1,0 +1,17 @@
+#server:
+#  ssl:
+#    trust-store: "classpath:trust-store.jks"
+#    trust-store-password: 123456
+#    trust-store-type: jks
+
+spring:
+  thymeleaf:
+    enabled: true
+    prefix: classpath:templates/
+    check-template-location: true
+    suffix: .html
+    check-template: true
+
+logging:
+  level:
+    root: info

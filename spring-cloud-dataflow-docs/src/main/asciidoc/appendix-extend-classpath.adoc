@@ -1,0 +1,47 @@
+[[extend-classpath]]
+
+=== Extending application classpath
+
+Users may require the addition of dependencies to the existing Stream applications or specific database drivers to Dataflow and Skipper or any of the other containers provider by the project.
+
+NOTE: The Spring Cloud Dataflow repository contains scripts to help with this task. The examples below assume you have cloned the `spring-cloud-dataflow` repository and are executing the scripts from `src/add-deps`.
+
+==== JAR File
+
+_We suggest you publish the updated jar it to a private Maven repository and that the Maven Coordinates of the private registry is then used to register application with SCDF._
+
+===== Example
+
+This example:
+* assumes the jar is downloaded to `${appFolder}/${appName}-${appVersion}.jar`
+* adds the dependencies and then publishes the jar to Maven local.
+
+[source,shell]
+....
+./gradlew -i publishToMavenLocal \
+    -P appFolder="." \
+    -P appGroup="org.springframework.cloud" \
+    -P appName="spring-cloud-dataflow-server" \
+    -P appVersion="2.11.3" \
+    -P depFolder="./extra-libs"
+....
+
+NOTE: Use the `publishMavenPublicationToMavenRepository` task to publish to a remote repository. Update the `gradle.properties` with the remote repository details. Alternatively move `repoUser` and `repoPassword` to ~/.gradle/gradle.properties
+
+==== Containers
+
+In order to create a container we suggest using https://buildpacks.io/docs/for-platform-operators/how-to/integrate-ci/pack[paketo pack cli] to create a container from the jar created in previous step.
+
+[source, shell]
+....
+REPO=springcloud/spring-cloud-dataflow-server
+TAG=2.11.3
+JAR=build/spring-cloud-dataflow-server-${TAG}.jar
+JAVA_VERSION=8
+pack build --builder gcr.io/paketo-buildpacks/builder:base \
+            --path "$JAR" \
+            --trust-builder --verbose \
+            --env BP_JVM_VERSION=${JAVA_VERSION} "$REPO:$TAG-jdk${JAVA_VERSION}-extra"
+....
+
+NOTE: Publish the container to a private container registry and register the application docker uri with SCDF.

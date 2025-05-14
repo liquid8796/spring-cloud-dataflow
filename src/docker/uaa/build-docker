@@ -1,0 +1,2 @@
+#!/bin/bash
+docker build -t springcloud/scdf-uaa-test:4.32 .
